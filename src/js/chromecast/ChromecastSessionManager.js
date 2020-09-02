@@ -87,10 +87,8 @@ ChromecastSessionManager = Class.extend(/** @lends ChromecastSessionManager.prot
     */
    _onSessionStateChange: function(event) {
       if (event.sessionState === cast.framework.SessionState.SESSION_ENDED) {
-         console.log('triggered session ended', event);
          this.player.trigger('chromecastDisconnected');
          this._reloadTech();
-         hasConnected = false;
       } else if (event.sessionState === cast.framework.SessionState.SESSION_STARTED) {
          hasConnected = true;
          this.player.trigger('chromecastConnected');

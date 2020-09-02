@@ -638,7 +638,7 @@ ChromecastTech = {
             castSession.endSession(true);
          }
          this._clearSessionTimeout();
-      }.bind(this), SESSION_TIMEOUT);
+      }.bind(this), 1); // Update this from originally SESSION_TIMEOUT, in order to being able to reconnect straight away
    },
 
    /**
