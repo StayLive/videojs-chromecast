@@ -157,6 +157,7 @@ ChromecastTech = {
           mediaInfo = new chrome.cast.media.MediaInfo(source.src, source.type),
           title = this._requestTitle(source),
           subtitle = this._requestSubtitle(source),
+          poster = this.poster(),
           customData = this._requestCustomData(source),
           request;
 
@@ -167,6 +168,9 @@ ChromecastTech = {
       mediaInfo.metadata.metadataType = chrome.cast.media.MetadataType.GENERIC;
       mediaInfo.metadata.title = title;
       mediaInfo.metadata.subtitle = subtitle;
+      if (poster) {
+         mediaInfo.metadata.image = [ { url: poster } ];
+      }
       if (customData) {
          mediaInfo.customData = customData;
       }
@@ -417,6 +421,17 @@ ChromecastTech = {
     */
    playsinline: function() {
       return true;
+   },
+
+   /**
+    * Does nothing. Satisfies calls to the missing preload method.
+    */
+   preload: function() {
+      // Not supported
+   },
+
+   seeking: function() {
+      // Not supported
    },
 
    /**
